@@ -1,0 +1,22 @@
+    {% extends 'home_page/home.html' %}
+    {% load static %}
+    {% block content %}
+    <script> M.toast({html: 'Login!'})</script>
+
+    <form id="pop-Login" class="modal-content animate" method="POST">
+        {% csrf_token %}
+        
+        <span class="close" title="Close PopUp"><a href="{% url 'homepage' %}">&times;</a></span>
+        <h1 style="text-align:center">Login</h1>
+    
+        <div class="contain1">   
+        
+        {{form1.as_p}}
+
+        <button type="submit" style="background:rgb(5, 5, 87)">Login</button>  
+
+        </div> 
+
+    </form>
+
+{% endblock %}

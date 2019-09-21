@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- <script>$(window).load(function() {
+            $(".se-pre-con").fadeOut("slow");;
+        });
+    </script> -->
+    <title>TEIT(D-Batch)</title>
+
+    <link rel="stylesheet" href="{% static 'home_page/css/main.css' %}">
+    
+    <script> $(function () {
+            $('body, .navbar-collapse form[role="search"] button[type="reset"]').on('click keyup', function(event) {
+                console.log(event.currentTarget);
+                if (event.which == 27 && $('.navbar-collapse form[role="search"]').hasClass('active') ||
+                    $(event.currentTarget).attr('type') == 'reset') {
+                    closeSearch();
+                }
+            });
+    
+            function closeSearch() {
+                var $form = $('.navbar-collapse form[role="search"].active')
+                $form.find('input').val('');
+                $form.removeClass('active');
+            }
+            $(document).on('click', '.navbar-collapse form[role="search"]:not(.active) button[type="submit"]', function(event) {
+                event.preventDefault();
+                var $form = $(this).closest('form'),
+                    $input = $form.find('input');
+                $form.addClass('active');
+                $input.focus();
+    
+            });
+            $(document).on('click', '.navbar-collapse form[role="search"].active button[type="submit"]', function(event) {
+                event.preventDefault();
+                var $form = $(this).closest('form'),
+                    $input = $form.find('input');
+                $('#showSearchTerm').text($input.val());
+                closeSearch()
+            });
+        });
+        </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>
+            $(document).ready(function() {
+            $("#next").click(function() {
+              $("#2step").show();
+              $('#1step').hide();
+            });
+          });
+          </script>
+    <style>
+        html,body{ margin:0; padding:0; height:100%; width:100%;-webkit-font-smoothing: antialiased;font-family: Arial,sans-serif; }
+        .container{width:50%;}
+        .navbar{height: 12%;}
+        .navbar-header{transition: width 2s, height 2s, transform 2s;}
+        .navbar-header:hover{transform: scale(1.2,1.5);}
+        .college1 table {
+			width:100%;
+		  }
+		.college1 table,.college1 th,.college1 td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		  }
+		.college1 th,.college1 td {
+			text-align: left;
+		  }
+		  table#t01 tr:nth-child(even) {
+			background-color: #eee;
+		  }
+		  table#t01 tr:nth-child(odd) {
+		   background-color: #fff;
+		  }
+		  table#t01 th {
+			background-color: black;
+			color: white;
+		  }
+    </style>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+        {% if user.is_authenticated and user.is_staff == False %}
+        {% include "home_page/includes/studentnav.html" %}
+        {% else %}
+        {% include "home_page/includes/navbar.html" %}
+        {% endif %}
+
+        {% include "home_page/includes/messages.html" %}
+        
+        {% block mbody %}
+        {% endblock %}
+
+        {% if user.is_authenticated and user.is_staff == False %}
+        {% include "home_page/includes/stdfooter.html" %}
+        {% else %}
+        {% include "home_page/includes/footer.html" %}
+        {% endif %}
+    </body>
+</html>

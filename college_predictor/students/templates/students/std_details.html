@@ -1,0 +1,21 @@
+{% extends 'home_page/home.html' %}
+{% block mbody %}   
+<div id="containerp">
+<div class="container"><a href={% url 'predict' %}>Predict</a></div>
+<div class="imgd">
+<span style="font-size: small"><a href={% url 'edit' %}>Edit</a></span>
+<img title="{{ data.Username }}" src="{{ data.image.url}}" alt="{{ data.FirstName }}">
+{{data.Username}}
+</div>
+<div style="padding: 10% 15% 0% 0%;font-size: xx-large">
+<table cellpadding="20">
+<tr><td><label><u>Firstname</u>:  </label><td>{{ data.FirstName }} </tr>
+<tr><td><label><u>Lastname</u>: </label><td>{{ data.LastName }}  </tr>
+<tr><td><label><u>City</u>: </label><td>{{ data.City }}  </tr>
+<tr><td><label><u>State</u>: </label><td>{{ data.State }} </tr>
+<tr><td><label><u>Department</u>: </label><td>{{ data.Department }} </tr>
+<tr><td><label><u>Marks</u>: </label><td>{{ data.Marks }} </tr>
+</table>
+</div>
+</div>
+{% endblock %}

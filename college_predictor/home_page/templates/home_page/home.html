@@ -1,0 +1,14 @@
+{% extends 'home_page/header.html' %}
+{% load static %}
+{% block mbody %}
+
+<div id="containerbg">
+            <img src="{% static "home_page/coep.jpg" %}" alt="My image">
+            <img src="{% static "home_page/iitb.jpg" %}" alt="My image">
+            <img src="{% static "home_page/KJS.jpeg" %}" alt="My image">
+            <img src="{% static "home_page/MIT.jpg" %}" alt="My image"> 
+
+            {% block content %}
+            {% endblock content %}
+        </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'home_page/home.html' %}
+{% block mbody %}
+<form method="POST">
+    {% csrf_token %}
+    <table>
+    {% for i in form %} 
+    {% if "Username" in i.label_tag %} 
+    <tr style="display:None"><td>{{i}}</td></tr>
+    {% else %}
+
+    <tr><td>{{ i.label_tag }}</td>
+    <td>{{i}}</td></tr>
+    
+
+    {% endif %}
+    {% endfor %}
+    </table>
+    <br><br>
+    <button type="submit" style="background:rgb(5, 5, 87);color: antiquewhite">Save</button>
+</form>
+{% endblock %}

@@ -1,0 +1,48 @@
+
+{% extends 'home_page/home.html' %}
+{% block mbody %}  
+<div> 
+<div id="containerp" style="padding:8% 20%">
+<form action="." method="POST">
+        {% csrf_token %}
+<select name="stream" id="">
+    <option >{{std.Department}}</option>
+    <option value="Computer">Computer</option>
+    <option value="Information Technology">Information Technology</option>
+    <option value="Mechanical">Mechanical</option>
+    <option value="Electronics">Electronics</option>
+    <option value="Civil">Civil</option>
+</select><br>
+<select name="state" id="">
+        <option>{{std.State}}</option>
+        <option>Maharashtra</option>
+        <option>Telangana</option>
+</select>
+<button type="submit">Search</button>
+</form>
+<div class="college1">
+<table id="t01">
+<tr><th>College Name</th><th>Address</th><th>City</th><th>State</th><th>Contact No.</th>
+{% if stream != '' %}
+<th>Department</th>
+{% endif %}
+</tr>
+{% with a=std.Marks %}
+{% for j in data %}
+{% if state != '' %}
+{% if j.Cut_off <= a and j.State == state %}
+<tr> <td>{{j}} <td>{{j.Address}} <td> {{j.City}} <td> {{j.State}} <td> {{j.Contact_no}}
+{% if stream != '' %}
+<td>{{stream}}
+{% endif %}
+</tr>
+
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endwith %}
+</table>
+</div>
+</div>
+</div>
+{% endblock %}
